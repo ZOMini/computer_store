@@ -5,7 +5,7 @@
 <h1>{{ text }} – My magazine. </h1>
 <h4> Новые поступления: </h4>
 {% for item in last_items %}
-{% include 'magazine/includes/one_item.html' %}
+{% include 'magazine/includes/one_item_short.html' %}
 {% if not forloop.last %}<hr>{% endif %}
 {% endfor %}
 {% endblock %}

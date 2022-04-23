@@ -1,0 +1,84 @@
+<!DOCTYPE html> 
+{% extends 'base.html' %}
+{% block title %}
+  {% if is_edit %}Редактируем товар{% else %}Создаем новый товар{% endif %}
+{% endblock %}
+{% block content %}
+  <body>	   
+    <main>
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8 p-5">
+            <div class="card">
+              <div class="card-header">       
+                {% if is_edit %}
+                  Редактировать
+                {% else %}
+                  Новый товар
+                {% endif %}         
+              </div>
+              {% if form.errors %}
+                {% for field in form %}
+                {% for error in field.errors %}
+                  <div class="alert alert-danger" role="alert">
+                  {{ field.label }}: {{ error|escape }}
+                  </div>
+                {% endfor %}
+                {% endfor %}
+              {% endif %}
+              <div class="card-body">        
+                {% if is_edit %}
+                  <form method="post" enctype="multipart/form-data" 
+                  action="{% url 'magazine:item_edit' item.id %}">
+                {% else %}
+                  <form method="post" enctype="multipart/form-data" 
+                  action="{% url 'magazine:item_create' %}">
+                {% endif %}
+                  {% csrf_token %}
+        
+                  <div class="form-group row my-3 p-3">
+                    <label for="id_text">
+                      Модель                 
+                      <span class="required text-danger" >*</span>                  
+                    </label>
+                    {{ form.name }}
+                    <small id="id_text-help" class="form-text text-muted">
+                      Название модели
+                    </small>                  
+                  </div>
+
+                  <div class="form-group row my-3 p-3">
+                    <label for="id_group">
+                      Серийный номер                 
+                    </label>
+                    {{ form.serial_num }}
+                    <small id="id_group-help" class="form-text text-muted">
+                      Серийный номер
+                    </small>
+                  </div>
+
+                  <div class="form-group row my-3 p-3">
+                    <label for="id_group">
+                      Статус                 
+                    </label>
+                    {{ form.status }}
+                    <small id="id_group-help" class="form-text text-muted">
+                      Статус
+                    </small>
+                  </div>
+
+                  <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">
+                     {% if is_edit %}Сохранить{% else %}Добавить{% endif %}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+{% endblock %}
+</html>

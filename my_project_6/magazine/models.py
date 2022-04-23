@@ -5,7 +5,6 @@ User = get_user_model()
 
 class Category(models.Model):
     title = models.CharField('Категория', max_length=64)
-    # slug = models.SlugField('Ссылка', unique=True,)
     description = models.TextField('Описание Категории', max_length=256)
 
     class Meta:
@@ -18,8 +17,23 @@ class Category(models.Model):
 
 class Name(models.Model):
     mod_name = models.CharField('Модель товара', max_length=64)
-    # slug = models.SlugField('Ссылка', unique=True,)
+    price=models.PositiveIntegerField('Цена', help_text='Цена товара', blank=True, null=True) 
     mod_detail = models.TextField('Описание Товара', max_length=256)
+    mod_date = models.DateTimeField('Дата создания', auto_now_add=True, null=True)
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+        verbose_name='Категория',
+        help_text='Выберите категорию',
+        related_name='category_name'
+    )
+    image = models.ImageField(
+        'Картинка',
+        upload_to='magazine/',
+        blank=True
+    )
 
     class Meta:
         verbose_name = 'Молель товара'
@@ -45,22 +59,11 @@ class Item(models.Model):
         null=True,
         verbose_name='Модель',
         help_text='Модель товара',
-        related_name='item_model'
+        related_name='model_items'
     )
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-        verbose_name='Категория',
-        help_text='Выберите категорию',
-        related_name='item_category'
-    )
-    # count_in_magaz=models.PositiveSmallIntegerField('кол-во в магазине', help_text='Количество товара в магазине', blank=True, null=True)
-    # count_in_store=models.PositiveSmallIntegerField('кол-во на складе', help_text='Количество товара на складе', blank=True, null=True)
-    price=models.PositiveIntegerField('цена', help_text='Цена товара', blank=True, null=True)
+
     serial_num=models.CharField('Серийный номер', max_length=12, blank=True, null=True, unique=True)
-    status= models.CharField('Место нахожднения/Статус', max_length=20, choices=STATUS, default='Store')
+    status= models.CharField('Место нахожднения/Статус', max_length=32, choices=STATUS, default='Store')
     pub_date = models.DateTimeField('Дата создания', auto_now_add=True)
     author = models.ForeignKey(
         User,
@@ -70,12 +73,6 @@ class Item(models.Model):
         verbose_name='Автор',
         related_name='items'
     )
-
-    # image = models.ImageField(
-    #     'Картинка',
-    #     upload_to='posts/',
-    #     blank=True
-    # )
 
     class Meta:
         ordering = ('-pub_date',)
