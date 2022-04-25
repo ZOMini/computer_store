@@ -9,32 +9,36 @@ style="background-color: lightskyblue">
       class="d-inline-block align-top" alt="">
       <span style="color:red">My</span> magazine
     </a>
-      {% with request.resolver_match.view_name as view_name %}
-      <ul class="nav nav-pills">
-        <li class="nav-item"> 
-        </li>
-        <li class="nav-item">
-        </li>
-        {% if request.user.is_authenticated %}
-        <li class="nav-item"> 
-        </li>
-        <li class="nav-item"> 
-          <a class="nav-link link-light"
-        </li>
-        <li class="nav-item"> 
-          <a class="nav-link link-light"
-        </li>
-        <li>
-        <li>
-        {% else %}
-        <li class="nav-item"> 
-          <a class="nav-link link-light" 
-        </li>
-        <li class="nav-item"> 
-          <a class="nav-link link-light" 
-        </li>
-        {% endif %}
-      </ul>
-      {% endwith %}
+    {% with request.resolver_match.view_name as view_name %}
+    <ul class="nav nav-pills">
+
+      {% if request.user.is_authenticated %}
+      <li class="nav-item"> 
+        <a class="nav-link {% if view_name  == 'magazine:index' %}active
+        {% endif %}"href="{% url 'magazine:index' %}">index</a>
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link link-light"
+        href="{% url 'users:password_change_form' %}">Изменить пароль</a>
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link link-light"
+        href="{% url 'users:logout'%}">Выйти</a>
+      </li>
+      <li>
+        User: {{ user.username }}
+      <li>
+      {% else %}
+      <li class="nav-item"> 
+        <a class="nav-link link-light" 
+        href="{% url 'users:login'%}">Войти</a>
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link link-light" 
+        href="{% url 'users:signup'%}">Регистрация</a>
+      </li>
+      {% endif %}
+    </ul>
+    {% endwith %}
   </div>
 </nav>      

@@ -19,7 +19,7 @@ class Name(models.Model):
     mod_name = models.CharField('Модель товара', max_length=64)
     price=models.PositiveIntegerField('Цена', help_text='Цена товара', blank=True, null=True) 
     mod_detail = models.TextField('Описание Товара', max_length=256)
-    mod_date = models.DateTimeField('Дата создания', auto_now_add=True, null=True)
+    mod_date = models.DateTimeField('Дата обновления', auto_now=True, null=True)
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
@@ -47,9 +47,10 @@ class Item(models.Model):
     STATUS = [
         ('Magaz', 'Magazine'),
         ('Store', 'Store'),
-        ('in_magaz', 'From store in magazine'),
-        ('wait', 'Purchased and wait in magazine'),
-        ('sold', 'Sold in magazine'),
+        ('In_magaz', 'From store in magazine'),
+        ('Wait', 'Purchased and wait in magazine'),
+        ('Order', 'Order and wait purchase'),
+        ('Sold', 'Sold in magazine'),
     ]
     # name = models.TextField('Название товара', help_text='Введите название товара', max_length=256)
     name = models.ForeignKey(
@@ -64,7 +65,8 @@ class Item(models.Model):
 
     serial_num=models.CharField('Серийный номер', max_length=12, blank=True, null=True, unique=True)
     status= models.CharField('Место нахожднения/Статус', max_length=32, choices=STATUS, default='Store')
-    pub_date = models.DateTimeField('Дата создания', auto_now_add=True)
+    phone=models.CharField('номер телефона', max_length=64, blank=True, null=True,)
+    pub_date = models.DateTimeField('Дата обновления', auto_now=True)
     author = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,

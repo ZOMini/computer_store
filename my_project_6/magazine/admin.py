@@ -8,10 +8,11 @@ class ItemAdmin(admin.ModelAdmin):
     list_display = (
         'pk',
         'name',
-        'pub_date',
-        'author',
         'serial_num',
         'status',
+        'phone',
+        'pub_date',
+        'author',
     )
     # list_editable = ('category','price')
     search_fields = ('name',)
