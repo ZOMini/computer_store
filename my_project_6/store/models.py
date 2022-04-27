@@ -31,7 +31,7 @@ class Name(models.Model):
     )
     image = models.ImageField(
         'Картинка',
-        upload_to='magazine/',
+        upload_to='store/',
         blank=True
     )
 
@@ -45,11 +45,11 @@ class Name(models.Model):
 
 class Item(models.Model):
     STATUS = [
-        ('Magaz', 'Magazine'),
+        ('Warehouse', 'Warehouse'),
         ('Store', 'Store'),
-        ('In_magaz', 'From store in magazine'),
-        ('Wait', 'Purchased and wait in magazine'),
-        ('Order', 'Order and wait purchase'),
+        ('In_magaz', 'From warehouse in store'),
+        ('Order', 'Order and wait proccesing'),
+        ('Wait', 'Wait purchase'),
         ('Sold', 'Sold in magazine'),
     ]
     # name = models.TextField('Название товара', help_text='Введите название товара', max_length=256)
@@ -65,7 +65,7 @@ class Item(models.Model):
 
     serial_num=models.CharField('Серийный номер', max_length=12, blank=True, null=True, unique=True)
     status= models.CharField('Место нахожднения/Статус', max_length=32, choices=STATUS, default='Store')
-    phone=models.CharField('номер телефона', max_length=64, blank=True, null=True,)
+    phone=models.CharField('Номер телефона и имя', max_length=64, blank=True, null=True,)
     pub_date = models.DateTimeField('Дата обновления', auto_now=True)
     author = models.ForeignKey(
         User,

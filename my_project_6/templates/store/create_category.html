@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
-{% extends 'base.html' %}
+{% extends 'base_staff.html' %}
 {% block title %}
-  {% if is_edit %}Редактируем товар{% else %}Создаем новый товар{% endif %}
+  {% if is_edit %}Редактируем категорию{% else %}Создаем новую категорию{% endif %}
 {% endblock %}
 {% block content %}
   <body>	   
@@ -14,7 +14,7 @@
                 {% if is_edit %}
                   Редактировать
                 {% else %}
-                  Новый товар
+                  Новая категория
                 {% endif %}         
               </div>
               {% if form.errors %}
@@ -29,61 +29,31 @@
               <div class="card-body">        
                 {% if is_edit %}
                   <form method="post" enctype="multipart/form-data" 
-                  action="{% url 'magazine:name_edit' name.id %}">
+                  action="{% url 'store:category_edit' category.id %}">
                 {% else %}
                   <form method="post" enctype="multipart/form-data" 
-                  action="{% url 'magazine:name_create' %}">
+                  action="{% url 'store:category_create' %}">
                 {% endif %}
                   {% csrf_token %}
         
                   <div class="form-group row my-3 p-3">
                     <label for="id_text">
-                      Модель                 
+                      Категория                 
                       <span class="required text-danger" >*</span>                  
                     </label>
-                    {{ form.mod_name }}
+                    {{ form.title }}
                     <small id="id_text-help" class="form-text text-muted">
-                      Название модели
+                      Название категории
                     </small>                  
                   </div>
 
                   <div class="form-group row my-3 p-3">
                     <label for="id_group">
-                      Цена                 
+                      Описание                
                     </label>
-                    {{ form.price }}
+                    {{ form.description }}
                     <small id="id_group-help" class="form-text text-muted">
-                      Цена
-                    </small>
-                  </div>
-
-                  <div class="form-group row my-3 p-3">
-                    <label for="id_group">
-                      Детали                 
-                    </label>
-                    {{ form.mod_detail }}
-                    <small id="id_group-help" class="form-text text-muted">
-                      Детали модели
-                    </small>
-                  </div>
-
-                  <div class="form-group row my-3 p-3">
-                    <label for="id_group">
-                      Категория                  
-                    </label>
-                    {{ form.category }}
-                    <small id="id_group-help" class="form-text text-muted">
-                      Категория, к которой относиться товар
-                    </small>
-                  </div>
-
-                  <div class="form-group row my-3 p-3">
-                    <label for="id_image">
-                      image                  
-                    </label>
-                    {{ form.image }}
-                    <small id="id_image-help" class="form-text text-muted">
-                      Картинка
+                      Описание категории
                     </small>
                   </div>
 

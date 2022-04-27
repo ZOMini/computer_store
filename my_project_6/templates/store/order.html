@@ -1,10 +1,9 @@
-<!-- templates/magazine/index.html -->
 {% extends 'base.html' %}
 {% block title %}Заказ товара{% endblock %}
 {% block content %}
-<h1>{{ text }} – My magazine. </h1>
-{% include 'magazine/includes/one_item_short.html' %}
-<form method="POST" action="{% url 'magazine:item_order' name_id %}">
+<h1>{{ text }} – My store. </h1>
+{% include 'store/includes/one_item_short.html' %}
+<form method="POST" action="{% url 'store:item_order' name_id %}">
     {% csrf_token %}
     <p>Введите номер телефона и Ваше имя:</p> 
     {{ form.as_p }}

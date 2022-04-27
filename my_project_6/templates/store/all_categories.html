@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Категории{% endblock %}
+{% block content %}
+<h1>{{ text }} – My magazine. </h1>
+<h4> Список категорий </h4>
+<p>
+    {% for category in all_categories %}
+    <b>{{category}}</b>
+    <b>{{ category.description|linebreaksbr }}: </b>
+    <object> <a href="{% url 'store:category_detail' category.id %}"><b> Просмотреть </b> </a> </object>
+    {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+</p>
+{% endblock %}

@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
-{% extends 'base.html' %}
+{% extends 'base_staff.html' %}
 {% block title %}
-  {% if is_edit %}Редактируем категорию{% else %}Создаем новую категорию{% endif %}
+  {% if is_edit %}Редактируем товар{% else %}Создаем новый товар{% endif %}
 {% endblock %}
 {% block content %}
   <body>	   
@@ -14,7 +14,7 @@
                 {% if is_edit %}
                   Редактировать
                 {% else %}
-                  Новая категория
+                  Новый товар
                 {% endif %}         
               </div>
               {% if form.errors %}
@@ -29,31 +29,41 @@
               <div class="card-body">        
                 {% if is_edit %}
                   <form method="post" enctype="multipart/form-data" 
-                  action="{% url 'magazine:category_edit' category.id %}">
+                  action="{% url 'store:item_edit' item.id %}">
                 {% else %}
                   <form method="post" enctype="multipart/form-data" 
-                  action="{% url 'magazine:category_create' %}">
+                  action="{% url 'store:item_create' %}">
                 {% endif %}
                   {% csrf_token %}
         
                   <div class="form-group row my-3 p-3">
                     <label for="id_text">
-                      Категория                 
+                      Модель                 
                       <span class="required text-danger" >*</span>                  
                     </label>
-                    {{ form.title }}
+                    {{ form.name }}
                     <small id="id_text-help" class="form-text text-muted">
-                      Название категории
+                      Название модели
                     </small>                  
                   </div>
 
                   <div class="form-group row my-3 p-3">
                     <label for="id_group">
-                      Описание                
+                      Серийный номер                 
                     </label>
-                    {{ form.description }}
+                    {{ form.serial_num }}
                     <small id="id_group-help" class="form-text text-muted">
-                      Описание категории
+                      Серийный номер
+                    </small>
+                  </div>
+
+                  <div class="form-group row my-3 p-3">
+                    <label for="id_group">
+                      Статус                 
+                    </label>
+                    {{ form.status }}
+                    <small id="id_group-help" class="form-text text-muted">
+                      Статус
                     </small>
                   </div>
 

@@ -1,0 +1,13 @@
+{% extends 'base_staff.html' %}
+{% block title %}Основная страница{% endblock %}
+{% block content %}
+<h1>{{ text }} </h1>
+<h4> Последний заказанный товар: </h4>
+{% for item in last_items %}
+{% include 'store/includes/one_item_short.html' %}
+<object> <a href="{% url 'store:item_edit' item.id %}"><b> Редактировать товар </b> </a> </object> &emsp;
+<object> <a href="{% url 'store:name_edit' item.name.id %}"><b> Редактировать модель </b> </a> </object> &emsp;
+<object> <a href="{% url 'store:category_edit' item.name.category.id %}"><b> Редактировать категорию </b> </a> </object>
+{% if not forloop.last %}<hr>{% endif %}
+{% endfor %}
+{% endblock %}

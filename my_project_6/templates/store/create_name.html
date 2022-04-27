@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-{% extends 'base.html' %}
+{% extends 'base_staff.html' %}
 {% block title %}
   {% if is_edit %}Редактируем товар{% else %}Создаем новый товар{% endif %}
 {% endblock %}
@@ -29,10 +29,10 @@
               <div class="card-body">        
                 {% if is_edit %}
                   <form method="post" enctype="multipart/form-data" 
-                  action="{% url 'magazine:item_edit' item.id %}">
+                  action="{% url 'store:name_edit' name.id %}">
                 {% else %}
                   <form method="post" enctype="multipart/form-data" 
-                  action="{% url 'magazine:item_create' %}">
+                  action="{% url 'store:name_create' %}">
                 {% endif %}
                   {% csrf_token %}
         
@@ -41,7 +41,7 @@
                       Модель                 
                       <span class="required text-danger" >*</span>                  
                     </label>
-                    {{ form.name }}
+                    {{ form.mod_name }}
                     <small id="id_text-help" class="form-text text-muted">
                       Название модели
                     </small>                  
@@ -49,21 +49,41 @@
 
                   <div class="form-group row my-3 p-3">
                     <label for="id_group">
-                      Серийный номер                 
+                      Цена                 
                     </label>
-                    {{ form.serial_num }}
+                    {{ form.price }}
                     <small id="id_group-help" class="form-text text-muted">
-                      Серийный номер
+                      Цена
                     </small>
                   </div>
 
                   <div class="form-group row my-3 p-3">
                     <label for="id_group">
-                      Статус                 
+                      Детали                 
                     </label>
-                    {{ form.status }}
+                    {{ form.mod_detail }}
                     <small id="id_group-help" class="form-text text-muted">
-                      Статус
+                      Детали модели
+                    </small>
+                  </div>
+
+                  <div class="form-group row my-3 p-3">
+                    <label for="id_group">
+                      Категория                  
+                    </label>
+                    {{ form.category }}
+                    <small id="id_group-help" class="form-text text-muted">
+                      Категория, к которой относиться товар
+                    </small>
+                  </div>
+
+                  <div class="form-group row my-3 p-3">
+                    <label for="id_image">
+                      image                  
+                    </label>
+                    {{ form.image }}
+                    <small id="id_image-help" class="form-text text-muted">
+                      Картинка
                     </small>
                   </div>
 

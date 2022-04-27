@@ -5,7 +5,6 @@
     , цена: <b>{{item.name.price}}</b> руб.
     , номер <b>{{item.serial_num}}</b>
     , дата добавления: <b>{{item.pub_date}}</b>
-    <object> <a href="{% url 'magazine:item_detail' item.id %}"><b> Детали </b> </a> </object>
+    <object> <a href="{% url 'store:item_detail' item.id %}"><b> Детали </b> </a> </object>
   </p>
-  
 </article>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from magazine.models import Category, Item, Name
+from store.models import Category, Item, Name
 
 
 @admin.register(Item)

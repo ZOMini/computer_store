@@ -14,12 +14,16 @@ style="background-color: lightskyblue">
 
       {% if request.user.is_authenticated %}
       <li class="nav-item"> 
-        <a class="nav-link {% if view_name  == 'store:all_categories' %}active
-        {% endif %}"href="{% url 'store:all_categories' %}">category</a>
+        <a class="nav-link {% if view_name  == 'store:item_create' %}active
+        {% endif %}"href="{% url 'store:item_create' %}">Создать товар</a>
       </li>
       <li class="nav-item"> 
-        <a class="nav-link {% if view_name  == 'store:index' %}active
-        {% endif %}"href="{% url 'store:index' %}">index</a>
+        <a class="nav-link {% if view_name  == 'store:category_create' %}active
+        {% endif %}"href="{% url 'store:category_create' %}">Создать категорию</a>
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link {% if view_name  == 'store:name_create' %}active
+        {% endif %}"href="{% url 'store:name_create' %}">Создать модель</a>
       </li>
       <li class="nav-item"> 
         <a class="nav-link link-light"
