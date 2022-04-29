@@ -32,4 +32,4 @@ class NameAdmin(admin.ModelAdmin):
     search_fields = ('mod_name',)
     empty_value_display = '--Пусто--'
 
-admin.site.disable_action('delete_selected')
+# admin.site.disable_action('delete_selected')

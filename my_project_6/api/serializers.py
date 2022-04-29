@@ -1,10 +1,11 @@
-from rest_framework import serializers
-from rest_framework.relations import SlugRelatedField
+from rest_framework.relations import (PrimaryKeyRelatedField, SlugRelatedField,
+                                      StringRelatedField)
+from rest_framework.serializers import ModelSerializer
 from rest_framework.validators import UniqueTogetherValidator
 from store.models import Category, Item, Name
 
 
-class ItemSerializer(serializers.ModelSerializer):
+class ItemSerializer(ModelSerializer):
     author = SlugRelatedField(slug_field='username', read_only=True)
     name = SlugRelatedField(slug_field='mod_name', read_only=True)
     
@@ -12,17 +13,30 @@ class ItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
         model = Item
 
-class NameSerializer(serializers.ModelSerializer):
-    category = SlugRelatedField(slug_field='title', read_only=True)
-    model_items = ItemSerializer(read_only=True, many=True)
-
+class NameSerializer(ModelSerializer):
+    category = StringRelatedField(read_only=True)
+    
     class Meta:
         fields = '__all__'
         model = Name
 
-class CategorySerializer(serializers.ModelSerializer):
-    category_name = NameSerializer(read_only=True, many=True)
+class NameSerializerGet(ModelSerializer):
+    category = StringRelatedField(read_only=True)
+    model_items = ItemSerializer(read_only=True, many=True)
+
+    class Meta:
+        fields = 'id', 'category', 'mod_name', 'price', 'mod_detail', 'mod_date', 'image', 'model_items'
+        model = Name
+
+class CategorySerializer(ModelSerializer):
     
     class Meta:
         fields = '__all__'
+        model = Category
+
+class CategorySerializerGet(ModelSerializer):
+    category_name = NameSerializerGet(read_only=True, many=True)
+    
+    class Meta:
+        fields = 'id', 'title', 'description', 'category_name'
         model = Category

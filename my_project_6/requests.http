@@ -42,6 +42,28 @@ GET  http://127.0.0.1:8000/api/v1/name/1/
 Content-Type: application/json
 Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
 ###
+POST http://127.0.0.1:8000/api/v1/name/
+Content-Type: application/json
+Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+
+{
+    "category": "1",
+    "mod_name": "Gforce 3080ti ASUS Tuf 12gb",
+    "price": "175000",
+    "mod_detail": "5555555"
+}
+###
+PATCH  http://127.0.0.1:8000/api/v1/name/1/
+Content-Type: application/json
+Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+
+{
+    "category": "1",
+    "mod_name": "Gforce 3080ti Palit Gamerock 12gb",
+    "price": "180000",
+    "mod_detail": "111111"
+}
+###
 GET  http://127.0.0.1:8000/api/v1/item/1/
 Content-Type: application/json
 Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2

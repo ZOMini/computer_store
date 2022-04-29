@@ -52,7 +52,6 @@ class Item(models.Model):
         ('Wait', 'Wait purchase'),
         ('Sold', 'Sold in magazine'),
     ]
-    # name = models.TextField('Название товара', help_text='Введите название товара', max_length=256)
     name = models.ForeignKey(
         Name,
         on_delete=models.SET_NULL,
