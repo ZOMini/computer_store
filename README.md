@@ -13,12 +13,13 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
-python manage.py createsuperuser(Для "не безопасных" операций с базой нужны права.)
+python manage.py createsuperuser (Для "не безопасных" операций с базой нужны права.)
 python manage.py loaddata fixtures.json (загрузка тестовый данных в базу)
 ```
 ## Работа с базой через веб интерфейс:
 - Построен на базе вьюфункций, для отработки навыков, хотя оптимальее было бы на сетах/джинериках с модификацией.
 - Взаимодействие с моделью User частично изменено, доступно через веб интерфейс.
+- Веб администрирование доступно через staff_panel, ограничено пермишенами.
 ```sh
 http://127.0.0.1:8000/ - index стартовая страница
 http://127.0.0.1:8000/store/item/<int:item_id>/
