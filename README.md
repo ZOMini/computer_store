@@ -1,11 +1,11 @@
 # my_project_6 (Store)
-## Пет проект магазина, на базе Django 2.2 + DRF
+## Пет проект - магазин компьютерных комплектующих, на базе Django 2.2 ORM + DRF
 Взаимодействие с данными возможно через:
 - Django стандартную админ панель.
 - Веб интерфейс.
 - API интерфейс.
 
-## Развертование проекта
+## Развертование проекта:
 ```sh
 python -m venv venv
 source venv/bin/activate
@@ -13,5 +13,24 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+python manage.py createsuperuser(Для "не безопасных" операций с базой нужны права.)
+python manage.py loaddata fixtures.json (загрузка тестовый данных в базу)
 ```
-
+## Работа с базой через веб интерфейс:
+- Взаимодействие с моделью User частично изменено, доступно через веб интерфейс.
+```sh
+127.0.0.1:8000/ - index стартовая страница
+127.0.0.1:8000/store/item/<int:item_id>/  
+127.0.0.1:8000/item/<int:item_id>/edit/ *
+127.0.0.1:8000/item/order/<int:name_id>/  
+127.0.0.1:8000/create_item/ *
+127.0.0.1:8000/name/<int:name_id>/ 
+127.0.0.1:8000/name/<int:name_id>/edit/ *
+127.0.0.1:8000/create_name/  *
+127.0.0.1:8000/category/<int:category_id>/
+127.0.0.1:8000/category/<int:category_id>/edit/  *
+127.0.0.1:8000/create_category/  *
+127.0.0.1:8000/all_categories/
+127.0.0.1:8000/staff_panel/  *
+```
+"*" - ограничены пермишенами, - только для зарегестрированных пользователей с соответствующими провами.
