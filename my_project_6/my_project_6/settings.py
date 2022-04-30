@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_extensions',
+    'drf_yasg',
     'sorl.thumbnail',
     'debug_toolbar',
     'store',
@@ -124,6 +125,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+} 
 
 INTERNAL_IPS = ['127.0.0.1',]
 
