@@ -1,10 +1,15 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import filters, permissions, viewsets
-from store.models import Category, Item, Name
 
 from api.permissions import AdminOrReadOnly
-from api.serializers import (CategorySerializer, CategorySerializerGet,
-                             ItemSerializer, NameSerializer, NameSerializerGet)
+from api.serializers import (
+    CategorySerializer,
+    CategorySerializerGet,
+    ItemSerializer,
+    NameSerializer,
+    NameSerializerGet
+)
+from store.models import Category, Item, Name
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
