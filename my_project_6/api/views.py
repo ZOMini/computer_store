@@ -29,10 +29,7 @@ class NameViewSet(viewsets.ModelViewSet):
     permission_classes = (AdminOrReadOnly, )
     def get_serializer_class(self):
         if self.action == 'retrieve':
-            # print(f'--if name {self.action}')
             return NameSerializerGet
-        # print(f'else action {self.action}')
-        # print(f'else metod{self.request.method}')
         # category= self.kwargs.get('mod_name')
         # print(f'category_fail?{category}')
         return NameSerializer 
