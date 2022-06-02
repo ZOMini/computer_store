@@ -1,3 +1,6 @@
+from xml.parsers.expat import model
+
+from requests import request
 from rest_framework.relations import (
     PrimaryKeyRelatedField,
     SlugRelatedField,
@@ -44,3 +47,42 @@ class CategorySerializerGet(ModelSerializer):
     class Meta:
         fields = 'id', 'title', 'description', 'category_name'
         model = Category
+
+class PostItemsSerialSerializer(ModelSerializer):
+    
+    class Meta:
+        fields = ('serial_num',)
+        model = Item
+
+    def create(self, validated_data):
+        # tags_data = validated_data.pop('tags')
+        # ingredients_data = validated_data.pop('ingredients')
+        # for ingredient in ingredients_data:
+        #     if ingredient['amount'] <= 0:
+        #         raise serializers.ValidationError(
+        #             'Количество ингридиента должно быть больше нуля!')
+        request = self.context.get('request')
+        serial_num = validated_data.get('serial_num')
+        author = request.user
+        name_id = self.context.get('name_id')
+        name = Name.objects.get(id=name_id)
+        item = Item.objects.create(
+            author=author,
+            name=name,
+            serial_num=serial_num,
+        )
+        item.save()
+        return item
+        # recipe = Recipe.objects.create(
+        #     author=author, **validated_data)
+        # recipe.save()
+        # recipe.tags.set(tags_data)
+        # for ingredient in ingredients_data:
+        #     ingredient_model = Ingredient.objects.get(id=ingredient['id'])
+        #     amount = ingredient['amount']
+        #     IngredientInRecipe.objects.create(
+        #         ingredient=ingredient_model,
+        #         recipe=recipe,
+        #         amount=amount
+        #     )
+        # return recipe

@@ -1,5 +1,13 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import filters, permissions, viewsets
+from rest_framework import (
+    filters,
+    mixins,
+    permissions,
+    status,
+    views,
+    viewsets
+)
+from rest_framework.response import Response
 
 from api.permissions import AdminOrReadOnly
 from api.serializers import (
@@ -7,7 +15,8 @@ from api.serializers import (
     CategorySerializerGet,
     ItemSerializer,
     NameSerializer,
-    NameSerializerGet
+    NameSerializerGet,
+    PostItemsSerialSerializer
 )
 from store.models import Category, Item, Name
 
@@ -44,3 +53,21 @@ class NameViewSet(viewsets.ModelViewSet):
         # print(f'category_fail?{category}')
         category = get_object_or_404(Category, id=category)
         serializer.save(category = category)
+
+class PostItemsSerialViews(views.APIView):
+    permission_classes = (permissions.IsAdminUser,)
+
+    def post(self, request, name_id):
+        # name = get_object_or_404(Name, id=name_id)
+        # user = self.request.user
+        data = request.data.get('model_items')
+        serializer = PostItemsSerialSerializer(data=data, many=True, context={'name_id': name_id, 'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.instance, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def perform_create(self, serializer):
+    #     category= self.request.data.get('category')
+    #     # print(f'category_fail?{category}')
+    #     category = get_object_or_404(Category, id=category)
+    #     serializer.save(category = category)

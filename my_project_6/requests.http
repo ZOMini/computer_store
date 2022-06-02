@@ -63,7 +63,24 @@ Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
     "price": "180000",
     "mod_detail": "111111"
 }
+
 ###
 GET  http://127.0.0.1:8000/api/v1/item/1/
 Content-Type: application/json
 Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+
+###
+POST  http://127.0.0.1:8000/api/v1/post_items_serial/1/
+Content-Type: application/json
+Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+
+{  
+    "model_items": [
+    {
+      "serial_num": "999999999999"
+    },
+    {
+      "serial_num": "000000000000"
+    }
+  ]
+}
