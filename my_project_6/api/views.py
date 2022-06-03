@@ -28,8 +28,6 @@ class CategoryViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'retrieve':
             return CategorySerializerGet
-        # print(f'else {self.action}')
-        # print(f'else metod{self.request.method}')
         return CategorySerializer 
 
 class ItemViewSet(viewsets.ModelViewSet):
@@ -45,19 +43,16 @@ class NameViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'retrieve':
             return NameSerializerGet
-        # category= self.kwargs.get('mod_name')
-        # print(f'category_fail?{category}')
         return NameSerializer 
     
     def perform_create(self, serializer):
         category= self.request.data.get('category')
-        # print(f'category_fail?{category}')
         category = get_object_or_404(Category, id=category)
         serializer.save(category = category)
 
 class PostItemsSerialViews(views.APIView):
     """
-    Гипотетическая необходимость создать объекты одинакового названия,
+    Гипотетическая необходимость создать Items одинаковой модели(Name),
     передавая в JSON только серийные номера, name в слаге.
     """
     permission_classes = (permissions.IsAdminUser,)
@@ -78,6 +73,10 @@ class PostItemsSerialViews(views.APIView):
 
 
 class DeleteItemsSerialViews(views.APIView):
+    """
+    Гипотетическая необходимость удалить любые Items,
+    передавая в JSON только серийные номера.
+    """
     permission_classes = (permissions.IsAdminUser,)
 
     def delete(self, request):
