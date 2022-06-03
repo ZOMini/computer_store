@@ -1,13 +1,6 @@
-from xml.parsers.expat import model
-
 from requests import request
-from rest_framework.relations import (
-    PrimaryKeyRelatedField,
-    SlugRelatedField,
-    StringRelatedField
-)
-from rest_framework.serializers import Field, ModelSerializer, ValidationError
-from rest_framework.validators import UniqueTogetherValidator
+from rest_framework.relations import SlugRelatedField, StringRelatedField
+from rest_framework.serializers import ModelSerializer
 
 from store.models import Category, Item, Name
 
