@@ -86,8 +86,7 @@ class DeleteItemsSerialViews(views.APIView):
                 item = Item.objects.filter(serial_num = data['serial_num'])
                 item.delete()
             else:
-                data_upd = ('нет такого с/н')
-                data['error']=data_upd
+                data['error']= 'нет такого с/н'
                 return Response(data, status=status.HTTP_400_BAD_REQUEST)
         return Response(status=status.HTTP_204_NO_CONTENT)  
 
