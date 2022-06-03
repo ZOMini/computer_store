@@ -58,16 +58,16 @@ class PostItemsSerialViews(views.APIView):
     permission_classes = (permissions.IsAdminUser,)
 
     def post(self, request, name_id):
-        # name = get_object_or_404(Name, id=name_id)
-        # user = self.request.user
         data = request.data.get('model_items')
-        serializer = PostItemsSerialSerializer(data=data, many=True, context={'name_id': name_id, 'request': request})
+        serializer = PostItemsSerialSerializer(
+            data=data, many=True,
+            context={'name_id': name_id, 'request': request})
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.instance, status=status.HTTP_201_CREATED)
+            serializer = ItemSerializer(
+                instance=serializer.instance,
+                context={'request': self.request},
+                many=True)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    # def perform_create(self, serializer):
-    #     category= self.request.data.get('category')
-    #     # print(f'category_fail?{category}')
-    #     category = get_object_or_404(Category, id=category)
-    #     serializer.save(category = category)
+

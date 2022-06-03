@@ -16,6 +16,8 @@ router_v1.register('item', ItemViewSet, 'item')
 router_v1.register('name', NameViewSet, 'name')
 
 urlpatterns = [
+    # Гипотетическая необходимость создать объекты одинакового названия
+    # передавая в JSON только серийные номера, name в URL слаге.
     path('v1/post_items_serial/<name_id>/',
          PostItemsSerialViews.as_view(), name='post_items_serial'),
     path('v1/', include(router_v1.urls)),
