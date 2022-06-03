@@ -84,3 +84,19 @@ Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
     }
   ]
 }
+
+###
+DELETE   http://127.0.0.1:8000/api/v1/delete_items_serial/
+Content-Type: application/json
+Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+
+{  
+    "model_items": [
+    {
+      "serial_num": "999999999999"
+    },
+    {
+      "serial_num": "000000000000"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ from rest_framework.relations import (
     SlugRelatedField,
     StringRelatedField
 )
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import Field, ModelSerializer, ValidationError
 from rest_framework.validators import UniqueTogetherValidator
 
 from store.models import Category, Item, Name

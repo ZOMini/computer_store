@@ -41,6 +41,7 @@ class NameViewSet(viewsets.ModelViewSet):
     queryset = Name.objects.all()
     serializer_class = NameSerializer
     permission_classes = (AdminOrReadOnly, )
+    
     def get_serializer_class(self):
         if self.action == 'retrieve':
             return NameSerializerGet
@@ -55,6 +56,10 @@ class NameViewSet(viewsets.ModelViewSet):
         serializer.save(category = category)
 
 class PostItemsSerialViews(views.APIView):
+    """
+    Гипотетическая необходимость создать объекты одинакового названия,
+    передавая в JSON только серийные номера, name в слаге.
+    """
     permission_classes = (permissions.IsAdminUser,)
 
     def post(self, request, name_id):
@@ -70,4 +75,18 @@ class PostItemsSerialViews(views.APIView):
                 many=True)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class DeleteItemsSerialViews(views.APIView):
+    permission_classes = (permissions.IsAdminUser,)
+
+    def delete(self, request):
+        data_set = request.data.get('model_items')
+        for data in data_set:
+            if Item.objects.filter(serial_num = data['serial_num']):
+                item = Item.objects.filter(serial_num = data['serial_num'])
+                item.delete()
+            else:
+                return Response(data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_204_NO_CONTENT)  
 
