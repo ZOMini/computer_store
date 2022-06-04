@@ -1,3 +1,5 @@
+from distutils.log import error
+
 from django.shortcuts import get_object_or_404
 from rest_framework import (
     filters,
@@ -11,6 +13,7 @@ from rest_framework.response import Response
 
 from api.permissions import AdminOrReadOnly
 from api.serializers import (
+    AltDeleteItemsSerialSerializer,
     CategorySerializer,
     CategorySerializerGet,
     ItemSerializer,
@@ -76,17 +79,42 @@ class DeleteItemsSerialViews(views.APIView):
     """
     Гипотетическая необходимость удалить любые Items,
     передавая в JSON только серийные номера.
+    Upd. Удаляет все Items которые найдет,
+    остальные вернет с ошибкой.
     """
     permission_classes = (permissions.IsAdminUser,)
 
     def delete(self, request):
         data_set = request.data.get('model_items')
+        data_success = {}
+        list_error = []
         for data in data_set:
-            if Item.objects.filter(serial_num = data['serial_num']):
-                item = Item.objects.filter(serial_num = data['serial_num'])
-                item.delete()
+            item_serial = data['serial_num']
+            if Item.objects.filter(serial_num = item_serial).exists():
+                data_success[item_serial] = 'Item успешно удален'
+                Item.objects.filter(serial_num = item_serial).delete()
             else:
-                data['error']= 'нет такого с/н'
-                return Response(data, status=status.HTTP_400_BAD_REQUEST)
-        return Response(status=status.HTTP_204_NO_CONTENT)  
+                list_error.append(item_serial)
+                data_success['error_sn']= list_error
+        if 'error_sn' in data_success:
+            data_success['error_info']= 'серийные(й) номера отсутствуют.'
+            i_status = status.HTTP_400_BAD_REQUEST
+        else:
+            i_status = status.HTTP_204_NO_CONTENT
+        return Response(data_success, status=i_status)  
 
+class AltDeleteItemsSerialViews(views.APIView):
+    """
+    Альтернативный метод удаления по серийникам.
+    Удаляет только если все серийные номера - валидны.
+    """
+    permission_classes = (permissions.IsAdminUser,)
+
+    def delete(self, request):
+        data_set = request.data.get('model_items')
+        serializer = AltDeleteItemsSerialSerializer(
+            data=data_set, many=True)
+        serializer.is_valid(raise_exception=True)
+        for data in serializer.validated_data:
+            data.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT) 

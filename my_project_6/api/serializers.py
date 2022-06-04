@@ -1,6 +1,11 @@
 from requests import request
 from rest_framework.relations import SlugRelatedField, StringRelatedField
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import (
+    CharField,
+    ModelSerializer,
+    Serializer,
+    ValidationError
+)
 
 from store.models import Category, Item, Name
 
@@ -60,3 +65,14 @@ class PostItemsSerialSerializer(ModelSerializer):
         )
         item.save()
         return item
+
+class AltDeleteItemsSerialSerializer(Serializer):
+    serial_num = CharField(max_length=12, min_length=12)
+    
+    def validate(self, data):
+        data_obj = data['serial_num']
+        item = Item.objects.filter(serial_num = data_obj)
+        if item.exists():
+            return item
+        else:
+            raise ValidationError(f'{data_obj} - такой серийный номер отсутствует.')

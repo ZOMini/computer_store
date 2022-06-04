@@ -2,6 +2,7 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from api.views import (
+    AltDeleteItemsSerialViews,
     CategoryViewSet,
     DeleteItemsSerialViews,
     ItemViewSet,
@@ -21,5 +22,7 @@ urlpatterns = [
          PostItemsSerialViews.as_view(), name='post_items_serial'),
     path('v1/delete_items_serial/',
          DeleteItemsSerialViews.as_view(), name='delete_items_serial'),
+    path('v1/alt_delete_items_serial/',
+         AltDeleteItemsSerialViews.as_view(), name='alt_delete_items_serial'),
     path('v1/', include(router_v1.urls)),
 ]
