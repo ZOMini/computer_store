@@ -1,9 +1,16 @@
 # my_project_6 (Store)
+
 ## Пет проект - магазин компьютерных комплектующих, на базе Django 2.2 ORM + DRF
 Взаимодействие с данными возможно через:
 - Django стандартную админ панель.
 - Веб интерфейс.
 - API интерфейс.
+
+## Стек
+- Python 3.9
+- Django 2.2
+- Django REST framework 3.13
+- Drf_yasg 1.2 (ReDoc + Swagger) API documentation
 
 ## Развертование проекта:
 ```sh
@@ -16,7 +23,18 @@ python manage.py runserver
 python manage.py createsuperuser (Для "не безопасных" операций с базой нужны права.)
 python manage.py loaddata fixtures.json (загрузка тестовый данных в базу)
 ```
+```sh
+Или Docker:
+pip instal docker
+docker build -t store .   (команда из папки с файлом DOckerfile) 
+docker run --name store -it -p 8000:8000 store
+docker exec store python manage.py makemigrations
+docker exec store python manage.py migrate
+docker exec store python manage.py createsuperuser (Для "не безопасных" операций с базой нужны права.)
+docker exec store python manage.py loaddata fixtures.json (загрузка тестовый данных в базу)
+```
 ## Работа с базой через веб интерфейс:
+- View реализованы через функции с целью отработки навыков, оптимальее было бы через ViewSet.
 - Взаимодействие с моделью User частично изменено, доступно через веб интерфейс.
 - Веб администрирование доступно через staff_panel, ограничено пермишенами.
 ```sh
