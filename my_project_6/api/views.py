@@ -56,7 +56,7 @@ class NameViewSet(viewsets.ModelViewSet):
 class PostItemsSerialViews(views.APIView):
     """
     Гипотетическая необходимость создать Items одинаковой модели(Name),
-    передавая в JSON только серийные номера, name в слаге.
+    передавая в JSON только серийные номера, Name в слаге.
     """
     permission_classes = (permissions.IsAdminUser,)
 
@@ -95,9 +95,9 @@ class DeleteItemsSerialViews(views.APIView):
                 Item.objects.filter(serial_num = item_serial).delete()
             else:
                 list_error.append(item_serial)
-                data_success['error_sn']= list_error
+                data_success['error_sn'] = list_error
         if 'error_sn' in data_success:
-            data_success['error_info']= 'серийные(й) номера отсутствуют.'
+            data_success['error_info'] = 'серийные(й) номера отсутствуют.'
             i_status = status.HTTP_400_BAD_REQUEST
         else:
             i_status = status.HTTP_204_NO_CONTENT
