@@ -21,17 +21,17 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 python manage.py createsuperuser (Для "не безопасных" операций с базой нужны права.)
-python manage.py loaddata fixtures.json (загрузка тестовый данных в базу)
+python manage.py loaddata fixtures.json (загрузка тестовый данных в базу.)
 ```
 ```sh
 Или Docker:
-pip instal docker
-docker build -t store .   (команда из папки с файлом DOckerfile) 
+https://docs.docker.com/engine/install/ - Установка Docker.
+docker build -t store .   (команда из папки с файлом DOckerfile.) 
 docker run --name store -it -p 8000:8000 store
 docker exec store python manage.py makemigrations
 docker exec store python manage.py migrate
 docker exec store python manage.py createsuperuser (Для "не безопасных" операций с базой нужны права.)
-docker exec store python manage.py loaddata fixtures.json (загрузка тестовый данных в базу)
+docker exec store python manage.py loaddata fixtures.json (Загрузка тестовый данных в базу.)
 ```
 ## Работа с базой через веб интерфейс:
 - View реализованы через функции с целью отработки навыков, оптимальее было бы через ViewSet.
@@ -61,7 +61,7 @@ http://127.0.0.1:8000/staff_panel/  *
 - Для аутентификацию используем стандартный модуль DRF - Authtoken
 - Для тестирования использовал REST Client for Visual Studio Code, см. файл requests.http в папке с проектом. 
 ```sh
-http://127.0.0.1:8000/api-token-auth/ - получение токена по логину/паролю(например superuser)
-http://127.0.0.1:8000/swagger/ - Swagger документация
-http://127.0.0.1:8000/redoc/ - ReDoc документация
+http://127.0.0.1:8000/api-token-auth/ - получение токена по логину/паролю(например superuser).
+http://127.0.0.1:8000/swagger/ - Swagger документация.
+http://127.0.0.1:8000/redoc/ - ReDoc документация.
 ```
