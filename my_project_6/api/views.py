@@ -87,16 +87,16 @@ class DeleteItemsSerialViews(views.APIView):
     def delete(self, request):
         data_set = request.data.get('model_items')
         data_success = {}
-        list_error = []
+        lists_error = []
         for data in data_set:
             item_serial = data['serial_num']
             if Item.objects.filter(serial_num = item_serial).exists():
                 data_success[item_serial] = 'Item успешно удален'
                 Item.objects.filter(serial_num = item_serial).delete()
             else:
-                list_error.append(item_serial)
-                data_success['error_sn'] = list_error
-        if 'error_sn' in data_success:
+                lists_error.append({'serial_num': item_serial})
+                data_success['error'] = lists_error
+        if 'error' in data_success:
             data_success['error_info'] = 'серийные(й) номера отсутствуют.'
             i_status = status.HTTP_400_BAD_REQUEST
         else:
