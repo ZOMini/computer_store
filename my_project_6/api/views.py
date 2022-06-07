@@ -47,7 +47,7 @@ class NameViewSet(viewsets.ModelViewSet):
         if self.action == 'retrieve':
             return NameSerializerGet
         return NameSerializer 
-    
+
     def perform_create(self, serializer):
         category= self.request.data.get('category')
         category = get_object_or_404(Category, id=category)
