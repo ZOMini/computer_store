@@ -121,4 +121,4 @@ LOGIN_URL = 'users:login'
 
 LOGIN_REDIRECT_URL = 'store:index'
 
-
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'

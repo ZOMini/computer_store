@@ -1,6 +1,6 @@
 # my_project_6 (Store)
 
-## Пет проект - магазин компьютерных комплектующих, на базе Django 2.2 ORM + DRF
+## Пет проект - магазин компьютерных комплектующих, на базе Django 4.0.4 ORM + DRF
 Взаимодействие с данными возможно через:
 - Django стандартную админ панель.
 - Веб интерфейс.
@@ -9,7 +9,7 @@
 
 ## Стек
 - Python 3.9
-- Django 2.2
+- Django 4.0.4
 - Django REST framework 3.13
 - Drf_yasg 1.2 (ReDoc + Swagger) API documentation
 
@@ -64,6 +64,6 @@ http://127.0.0.1:8000/admin/ * - стандартная django админка
 - Для тестирования использовал REST Client for Visual Studio Code, см. файл requests.http в папке с проектом. 
 ```sh
 http://127.0.0.1:8000/api-token-auth/ - получение токена по логину/паролю(например superuser).
-http://127.0.0.1:8000/swagger/ - Swagger документация.
-http://127.0.0.1:8000/redoc/ - ReDoc документация.
+http://127.0.0.1:8000/api/swagger/ - Swagger документация.
+http://127.0.0.1:8000/api/redoc/ - ReDoc документация.
 ``` 
