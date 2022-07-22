@@ -10,13 +10,13 @@ jobs:
     - name: copy file via ssh key
       uses: actions/checkout@v2
       uses: a-was/scp-action@v1
-        with:
-          source: 'https://github.com/ZOMini/computer_store/blob/main/docker-compose.yaml'
-          remote: '/home/zomini/'
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
+      with:
+        source: 'https://github.com/ZOMini/computer_store/blob/main/docker-compose.yaml'
+        remote: '/home/zomini/'
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
     - name: executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
