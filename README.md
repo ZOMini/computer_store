@@ -12,7 +12,7 @@
 - Django 4.0.4
 - Django REST framework 3.13
 - Drf_yasg 1.2 (ReDoc + Swagger) API documentation
-
+ 
 ## Развертование проекта:
 ```sh
 python -m venv venv
