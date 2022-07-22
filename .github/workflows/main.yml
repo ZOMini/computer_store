@@ -7,26 +7,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: copy file via ssh key
-      uses: actions/checkout@v2
-      uses: a-was/scp-action@v1
-      with:
-        source: 'https://github.com/ZOMini/computer_store/blob/main/docker-compose.yaml'
-        remote: '/home/zomini/'
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
-    - name: executing remote ssh commands to deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
-        script: |
-            
-            sudo docker-compose stop
-            sudo docker-compose rm -f web
-            sudo docker-compose up -d --build
-            sudo docker-compose exec -T web python manage.py collectstatic --noinput
+      - uses: actions/checkout@v2
+      - uses: a-was/scp-action@v1
+        with:
+          source: 'infra/*'
+          destination: '/home/zomini/'
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+      - name: executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          script: |
+              
+              sudo docker-compose stop
+              sudo docker-compose rm -f web
+              sudo docker-compose up -d --build
+              sudo docker-compose exec -T web python manage.py collectstatic --noinput
