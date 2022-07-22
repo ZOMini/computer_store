@@ -17,6 +17,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
+          rm: True
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -26,7 +27,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
               cd infra_store/
-              sudo docker-compose stop
-              sudo docker-compose rm -f web
-              sudo docker-compose up -d --build
-              sudo docker-compose exec -T web python manage.py collectstatic --noinput
+              sudo infra_store/docker-compose stop
+              sudo infra_store/docker-compose rm -f web
+              sudo infra_store/docker-compose up -d --build
+              sudo infra_store/docker-compose exec -T web python manage.py collectstatic --noinput
