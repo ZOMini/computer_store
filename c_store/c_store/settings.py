@@ -7,7 +7,9 @@ SECRET_KEY = 'zpj#r!xryf0o75rlt9n!k(@ijotd#!&ozt1n+zflols!p%-*%&'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '51.250.77.168']
+
+INTERNAL_IPS = ['127.0.0.1',]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -22,8 +24,9 @@ INSTALLED_APPS = [
     'drf_yasg',
     'sorl.thumbnail',
     'debug_toolbar',
-    'store',
-    'users',
+    'store.apps.StoreConfig',
+    'users.apps.UserConfig',
+    'api.apps.ApiConfig'
 ]
 
 MIDDLEWARE = [
@@ -37,7 +40,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-ROOT_URLCONF = 'my_project_6.urls'
+ROOT_URLCONF = 'c_store.urls'
 
 TEMPLATES = [
     {
@@ -55,7 +58,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'my_project_6.wsgi.application'
+WSGI_APPLICATION = 'c_store.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -89,8 +92,8 @@ REST_FRAMEWORK = {
     ]
 }
 
-STATIC_URL = '/static/'
-STATIC_ROOT = (os.path.join(BASE_DIR, 'static/'),)
+STATIC_URL = 'static/'
+STATIC_ROOT = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') 
@@ -104,8 +107,6 @@ SWAGGER_SETTINGS = {
       }
    }
 } 
-
-INTERNAL_IPS = ['127.0.0.1',]
 
 LANGUAGE_CODE = 'ru'
 
