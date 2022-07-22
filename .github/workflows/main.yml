@@ -25,7 +25,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-              cd infra_store/
               sudo infra_store/docker-compose stop
               sudo infra_store/docker-compose rm -f web
               sudo infra_store/docker-compose up -d --build
