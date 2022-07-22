@@ -26,6 +26,6 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
               sudo infra_store/docker-compose stop
-              sudo infra_store/docker-compose rm -f web
+              sudo infra_store/docker-compose rm -f web_store
               sudo infra_store/docker-compose up -d --build
-              sudo infra_store/docker-compose exec -T web python manage.py collectstatic --noinput
+              sudo infra_store/docker-compose exec -T web_store python manage.py collectstatic --noinput
