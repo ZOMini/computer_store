@@ -12,12 +12,11 @@ jobs:
         uses: appleboy/scp-action@master
         with:
           source: "infra_store/docker-compose.yaml, infra_store/default.conf"
-          target: "/home/zomini/"
+          target: "/home/zomini/" --overwrite
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          rm: true
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
