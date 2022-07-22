@@ -17,16 +17,16 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-      - name: executing remote ssh commands to deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          script: |
-              cd infra_store
-              sudo docker-compose stop
-              sudo docker-compose rm -f web_store
-              sudo docker-compose up -d --build
+      # - name: executing remote ssh commands to deploy
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USER }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     passphrase: ${{ secrets.PASSPHRASE }}
+      #     script: |
+      #         cd infra_store
+      #         sudo docker-compose stop
+      #         sudo docker-compose rm -f web_store
+      #         sudo docker-compose up -d --build
 
