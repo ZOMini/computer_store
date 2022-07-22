@@ -7,11 +7,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: a-was/scp-action@v1
+      - name: ssh key with passphrase
+        uses: garygrossgarten/github-action-scp@release
         with:
-          source: 'infra/*'
-          destination: '/home/zomini/'
+          local: infra
+          destination: /home/zomini/
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
