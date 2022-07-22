@@ -13,6 +13,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
         source: "./default.conf,./docker-compose.yaml"
         target: "./"
     - name: executing remote ssh commands to deploy
