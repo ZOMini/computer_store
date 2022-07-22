@@ -6,7 +6,7 @@ SECRET_KEY = 'zpj#r!xryf0o75rlt9n!k(@ijotd#!&ozt1n+zflols!p%-*%&'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
+ALLOWED_HOSTS = ['*']
 
 INTERNAL_IPS = ['127.0.0.1',]
 
@@ -103,8 +103,8 @@ REST_FRAMEWORK = {
 }
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
