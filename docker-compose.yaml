@@ -2,25 +2,25 @@ version: '2.2'
 
 services:
 
-  db_store:
+  db:
     image: postgres:13.0-alpine
     volumes:
       - /var/lib/postgresql/data/
     env_file:
       - ./.env
   
-  web_store:
+  web:
     image: zomin/computer_store
     restart: always
     volumes:
       - static_value:/c_store/static/
       - media_value:/c_store/media/
     depends_on:
-      - db_store
+      - db
     env_file:
       - ./.env 
   
-  nginx_store:
+  nginx:
     image: nginx:1.21.3-alpine
     ports:
       - "80:80"
@@ -29,7 +29,7 @@ services:
       - static_value:/var/html/static/
       - media_value:/var/html/media/
     depends_on:
-      - web_store
+      - web
 
 volumes:
   static_value:
