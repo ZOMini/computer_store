@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          rm: True
+          rm: true
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
