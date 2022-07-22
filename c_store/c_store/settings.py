@@ -6,7 +6,7 @@ SECRET_KEY = 'zpj#r!xryf0o75rlt9n!k(@ijotd#!&ozt1n+zflols!p%-*%&'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '51.250.77.168']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '51.250.12.147']
 
 INTERNAL_IPS = ['127.0.0.1',]
 
