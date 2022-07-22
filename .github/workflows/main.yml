@@ -11,7 +11,7 @@ jobs:
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
         with:
-          source: "infra/docker-compose.yaml, infra/default.conf"
+          source: "infra_store/docker-compose.yaml, infra_store/default.conf"
           target: "/home/zomini/"
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
