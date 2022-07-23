@@ -49,7 +49,9 @@ HOST - Публичный ip адрес сервера
 USER - Пользователь сервера
 PASSPHRASE - Если ssh-ключ защищен фразой-паролем
 SSH_KEY - Приватный ssh-ключ
-После успешного коммита и прохождения тестов ваш проект автоматически будет настроен на сервере.
+После успешного коммита и прохождения тестов ваш проект автоматически будет настроен на сервере. Далее:
+sudo docker-compose exec web python manage.py migrate --noinput
+sudo docker-compose exec web python manage.py collectstatic --noinput
 sudo docker-compose exec web python manage.py createsuperuser - создаем суперпользователя
 sudo docker-compose exec web python manage.py loaddata fixtures.json - Загрузка тестовый данных в базу.
 ```
