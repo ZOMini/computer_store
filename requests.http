@@ -1,5 +1,5 @@
 # Получение токена по username & password.
-# "token": "745b2d9ae14268b98ccb55c03c6dfd5c404710d0".
+# "token": "745b2d9ae14268b98ccb55c03c6dfd5c404710d0". 
 # Логин и пороль можно получить: python manage.py createsuperuser
 POST http://62.84.117.214/api-token-auth/
 Content-Type: application/json
