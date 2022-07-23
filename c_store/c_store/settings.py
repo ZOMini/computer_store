@@ -8,7 +8,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['http://*.62.84.117.214','http://*.127.0.0.1']
 
 INTERNAL_IPS = ['127.0.0.1',]
 
