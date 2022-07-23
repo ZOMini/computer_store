@@ -1,118 +1,136 @@
 # Получение токена по username & password.
-# "token": "13a88ce1300a3de5325b11c8372ff39b9c975dc2".
+# "token": "745b2d9ae14268b98ccb55c03c6dfd5c404710d0".
 # Логин и пороль можно получить: python manage.py createsuperuser
-POST http://127.0.0.1:8000/api-token-auth/
+POST http://62.84.117.214/api-token-auth/
 Content-Type: application/json
 
 {
     "username": "zomin",
-    "password": "90210"
+    "password": "Vitaliya"
 }
-###
-# Дерево запросов.
-GET  http://127.0.0.1:8000/api/v1/
-Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
 
 ###
-GET  http://127.0.0.1:8000/api/v1/category/1/
+POST http://62.84.117.214/api/v1/category/
 Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
-###
-PATCH http://127.0.0.1:8000/api/v1/category/1/
-Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
-
-{
-    "id": 1,
-    "title": "Videocard",
-    "description": "Видеокарты"
-}
-###
-POST http://127.0.0.1:8000/api/v1/category/
-Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
 
 {
     "title": "HDD",
     "description": "Жесткие диски"
 }
 ###
-GET  http://127.0.0.1:8000/api/v1/name/1/
+POST http://62.84.117.214/api/v1/category/
 Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
-###
-POST http://127.0.0.1:8000/api/v1/name/
-Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
 
 {
-    "category": "1",
+    "title": "Videocard",
+    "description": "Видеокарты"
+}
+###
+GET  http://62.84.117.214/api/v1/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+###
+GET  http://62.84.117.214/api/v1/category/2/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+###
+PATCH http://62.84.117.214/api/v1/category/1/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+
+{
+    "id": 1,
+    "title": "HDD_2",
+    "description": "Жесткие диски"
+}
+
+###  -------------------name---------------------
+POST http://62.84.117.214/api/v1/name/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+
+{
+    "category": 2,
     "mod_name": "Gforce 3080ti ASUS Tuf 12gb",
     "price": "175000",
     "mod_detail": "5555555"
 }
 ###
-PATCH  http://127.0.0.1:8000/api/v1/name/1/
+GET  http://62.84.117.214/api/v1/name/1/
 Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+###
+GET  http://62.84.117.214/api/v1/name/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+###
+PATCH  http://62.84.117.214/api/v1/name/1/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
 
 {
-    "category": "1",
+    "category": 2,
     "mod_name": "Gforce 3080ti Palit Gamerock 12gb",
     "price": "180000",
     "mod_detail": "111111"
 }
 
-###
-GET  http://127.0.0.1:8000/api/v1/item/1/
+###  ---------------Item----------------------
+POST  http://62.84.117.214/api/v1/post_items_serial/1/
 Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
-
-###
-POST  http://127.0.0.1:8000/api/v1/post_items_serial/1/
-Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
 
 {  
     "model_items": [
     {
-      "serial_num": "999999999999"
+      "serial_num": 666666666667
     },
     {
-      "serial_num": "000000000000"
+      "serial_num": 666666666666
     }
   ]
 }
-
-###
-DELETE   http://127.0.0.1:8000/api/v1/delete_items_serial/
+### 
+GET  http://62.84.117.214/api/v1/item/9/
 Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+###
+GET  http://62.84.117.214/api/v1/item/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+### 
+DELETE  http://62.84.117.214/api/v1/item/8/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+###
+DELETE   http://62.84.117.214/api/v1/delete_items_serial/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
 
 {  
     "model_items": [
     {
-      "serial_num": "999999999999"
+      "serial_num": 666666666667
     },
     {
-      "serial_num": "000000000000"
+      "serial_num": 666666666666
     }
   ]
 }
-
 ###
-DELETE   http://127.0.0.1:8000/api/v1/alt_delete_items_serial/
+DELETE   http://62.84.117.214/api/v1/alt_delete_items_serial/
 Content-Type: application/json
-Authorization: Token 13a88ce1300a3de5325b11c8372ff39b9c975dc2
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
 
 {  
     "model_items": [
     {
-      "serial_num": "999999999999"
+      "serial_num": 666666666667
     },
     {
-      "serial_num": "000000000000"
+      "serial_num": 666666666666
     }
   ]
 }
