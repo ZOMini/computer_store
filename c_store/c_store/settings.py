@@ -8,7 +8,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://*.51.250.71.81','http://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['http://*.62.84.117.214','http://*.127.0.0.1']
 
 INTERNAL_IPS = ['127.0.0.1',]
 
@@ -69,15 +69,15 @@ WSGI_APPLICATION = 'c_store.wsgi.application'
 # }
 
 DATABASES = {
-        'default': {
-           'ENGINE': 'django.db.backends.postgresql',
-           'NAME': 'postgres',
-           'USER': 'postgres',
-           'PASSWORD': 'postgres',
-           'HOST': 'db',
-           'PORT': '5432',
-        }
+    'default': {
+        'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
+        'NAME': os.getenv('DB_NAME', default='postgres'),
+        'USER': os.getenv('POSTGRES_USER', default='postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='postgres'),
+        'HOST': os.getenv('DB_HOST', default='db'),
+        'PORT': os.getenv('DB_PORT', default='5432')
     }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {

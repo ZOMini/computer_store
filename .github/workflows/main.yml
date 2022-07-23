@@ -25,8 +25,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-              cd infra_store
               sudo docker-compose stop
               sudo docker-compose rm -f web
               sudo docker-compose up -d --build
+              sudo docker-compose exec web python manage.py migrate --noinput
+              sudo docker-compose exec web python manage.py collectstatic --noinput
 

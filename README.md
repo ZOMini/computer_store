@@ -34,6 +34,25 @@ docker exec store python manage.py migrate
 docker exec store python manage.py createsuperuser (Для "не безопасных" операций с базой нужны права.)
 docker exec store python manage.py loaddata fixtures.json (Загрузка тестовый данных в базу.)
 ```
+```sh
+Деплой на удаленный сервер(проверял на Ubuntu 20.04):
+Подготавливаем сервер:
+sudo systemctl stop nginx
+sudo apt update
+sudo apt install docker.io
+sudo apt install curl
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+Готовим репозитарий:
+В 'Actions secrets' в настройках вашего проекта на GitHub внесите необходимые параметры сервера:
+HOST - Публичный ip адрес сервера
+USER - Пользователь сервера
+PASSPHRASE - Если ssh-ключ защищен фразой-паролем
+SSH_KEY - Приватный ssh-ключ
+После успешного коммита и прохождения тестов ваш проект автоматически будет настроен на сервере.
+sudo docker-compose exec web python manage.py createsuperuser - создаем суперпользователя
+sudo docker-compose exec web python manage.py loaddata fixtures.json - Загрузка тестовый данных в базу.
+```
 ## Работа с базой через веб интерфейс:
 - Взаимодействие с моделью User частично изменено, доступно через веб интерфейс.
 - Веб администрирование доступно через staff_panel, ограничено пермишенами.
