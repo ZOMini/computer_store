@@ -10,6 +10,7 @@ services:
       - ./.env
   
   web:
+    # build: .
     image: zomin/computer_store
     restart: always
     volumes:

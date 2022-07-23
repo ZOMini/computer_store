@@ -6,7 +6,7 @@ SECRET_KEY = 'zpj#r!xryf0o75rlt9n!k(@ijotd#!&ozt1n+zflols!p%-*%&'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['db', 'db:5432','web', 'web:8000','127.0.0.1','51.250.71.81','*']
+ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = ['http://*.51.250.71.81','http://*.127.0.0.1']
 
