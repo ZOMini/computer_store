@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Основная страница{% endblock %}
 {% block content %}
-<h1>{{ text }} – My magazine. </h1>
+<h1>{{ text }}</h1>
 <h4> Новые поступления: </h4>
 {% for item in last_items %}
 {% include 'store/includes/one_item_short.html' %}

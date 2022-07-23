@@ -11,7 +11,7 @@ from store.time_func import timeit
 @timeit
 def index(request):
     template = 'store/index.html'
-    text = 'Это главная страница проекта My_project_6'
+    text = 'Это главная страница проекта Store'
     last_items = Item.objects.filter(status='Store').order_by('-pub_date')[:10]
     context = {
         'last_items': last_items,
