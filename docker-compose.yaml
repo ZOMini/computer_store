@@ -6,20 +6,20 @@ services:
     image: postgres:13.0-alpine
     volumes:
       - /var/lib/postgresql/data/
-    env_file:
-      - ./.env
+    # env_file:
+    #   - ./.env
   
   web:
     # build: .
-    image: zomin/computer_store
+    image: zomin/computer_store:latest
     restart: always
     volumes:
       - static_value:/c_store/static/
       - media_value:/c_store/media/
     depends_on:
       - db
-    env_file:
-      - ./.env 
+    # env_file:
+    #   - ./.env 
   
   nginx:
     image: nginx:1.21.3-alpine
