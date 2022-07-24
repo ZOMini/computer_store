@@ -1,6 +1,9 @@
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://62.84.117.214:9001/api/redoc/)
 ![example workflow](https://github.com/zomini/computer_store/actions/workflows/main.yml/badge.svg)
 # Сomputer store
+- Проект работает: http://62.84.117.214:9001/admin/ (zomin / Vitaliya)
+-    в requests.http тестирование API
+
 
 ## Пет проект - магазин компьютерных комплектующих, на базе Django 4.0.4 ORM + DRF
 Взаимодействие с данными возможно через:
