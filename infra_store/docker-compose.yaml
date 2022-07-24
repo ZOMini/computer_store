@@ -10,7 +10,7 @@ services:
       - ./.env
   
   web:
-    image: zomin/computer_store
+    image: zomin/computer_store:latest
     restart: always
     volumes:
       - static_value:/c_store/static/
