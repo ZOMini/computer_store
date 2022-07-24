@@ -1,7 +1,7 @@
 # Получение токена по username & password.
-# "token": "745b2d9ae14268b98ccb55c03c6dfd5c404710d0". 
+# "token": "4898f1fdee7db9a38376ad717bcefb3914070949". 
 # Логин и пороль можно получить: python manage.py createsuperuser
-POST http://62.84.117.214/api-token-auth/
+POST http://62.84.117.214:9001/api-token-auth/
 Content-Type: application/json
 
 {
@@ -10,35 +10,35 @@ Content-Type: application/json
 }
 
 ###
-POST http://62.84.117.214/api/v1/category/
+POST http://62.84.117.214:9001/api/v1/category/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 
 {
     "title": "HDD",
     "description": "Жесткие диски"
 }
 ###
-POST http://62.84.117.214/api/v1/category/
+POST http://62.84.117.214:9001/api/v1/category/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 
 {
     "title": "Videocard",
     "description": "Видеокарты"
 }
 ###
-GET  http://62.84.117.214/api/v1/
+GET  http://62.84.117.214:9001/api/v1/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 ###
-GET  http://62.84.117.214/api/v1/category/2/
+GET  http://62.84.117.214:9001/api/v1/category/2/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 ###
-PATCH http://62.84.117.214/api/v1/category/1/
+PATCH http://62.84.117.214:9001/api/v1/category/1/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 
 {
     "id": 1,
@@ -47,9 +47,9 @@ Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
 }
 
 ###  -------------------name---------------------
-POST http://62.84.117.214/api/v1/name/
+POST http://62.84.117.214:9001/api/v1/name/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 
 {
     "category": 2,
@@ -58,9 +58,9 @@ Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
     "mod_detail": "5555555"
 }
 ###
-POST http://62.84.117.214/api/v1/name/
+POST http://62.84.117.214:9001/api/v1/name/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 
 {
     "category": 1,
@@ -69,17 +69,17 @@ Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
     "mod_detail": "666666"
 }
 ###
-GET  http://62.84.117.214/api/v1/name/1/
+GET  http://62.84.117.214:9001/api/v1/name/1/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 ###
-GET  http://62.84.117.214/api/v1/name/
+GET  http://62.84.117.214:9001/api/v1/name/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 ###
-PATCH  http://62.84.117.214/api/v1/name/1/
+PATCH  http://62.84.117.214:9001/api/v1/name/1/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 
 {
     "category": 2,
@@ -89,9 +89,9 @@ Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
 }
 
 ###  ---------------Item----------------------
-POST  http://62.84.117.214/api/v1/post_items_serial/1/
+POST  http://62.84.117.214:9001/api/v1/post_items_serial/1/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 
 {  
     "model_items": [
@@ -104,21 +104,21 @@ Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
   ]
 }
 ### 
-GET  http://62.84.117.214/api/v1/item/9/
+GET  http://62.84.117.214:9001/api/v1/item/9/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 ###
-GET  http://62.84.117.214/api/v1/item/
+GET  http://62.84.117.214:9001/api/v1/item/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 ### 
-DELETE  http://62.84.117.214/api/v1/item/8/
+DELETE  http://62.84.117.214:9001/api/v1/item/8/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 ###
-DELETE   http://62.84.117.214/api/v1/delete_items_serial/
+DELETE   http://62.84.117.214:9001/api/v1/delete_items_serial/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 
 {  
     "model_items": [
@@ -131,9 +131,9 @@ Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
   ]
 }
 ###
-DELETE   http://62.84.117.214/api/v1/alt_delete_items_serial/
+DELETE   http://62.84.117.214:9001/api/v1/alt_delete_items_serial/
 Content-Type: application/json
-Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+Authorization: Token 4898f1fdee7db9a38376ad717bcefb3914070949
 
 {  
     "model_items": [
