@@ -58,6 +58,17 @@ Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
     "mod_detail": "5555555"
 }
 ###
+POST http://62.84.117.214/api/v1/name/
+Content-Type: application/json
+Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
+
+{
+    "category": 1,
+    "mod_name": "HDD 1Tb WD",
+    "price": "3500",
+    "mod_detail": "666666"
+}
+###
 GET  http://62.84.117.214/api/v1/name/1/
 Content-Type: application/json
 Authorization: Token 745b2d9ae14268b98ccb55c03c6dfd5c404710d0
