@@ -1,7 +1,7 @@
-[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://62.84.117.214:9001/api/redoc/)
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://130.193.37.228:9001/api/redoc/)
 ![example workflow](https://github.com/zomini/computer_store/actions/workflows/main.yml/badge.svg)
 # Сomputer store
-- Проект работает: http://62.84.117.214:9001/admin/ (zomin / Vitaliya)
+- Проект работает: http://130.193.37.228:9001/admin/ (zomin / Vitaliya)
 -    в requests.http тестирование API
 
 
